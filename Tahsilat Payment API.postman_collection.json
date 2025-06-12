@@ -1,0 +1,1595 @@
+{
+	"info": {
+		"_postman_id": "38f571f9-2f9b-43cf-93f6-2fc61f74314a",
+		"name": "Tahsilat Payment API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11592891",
+		"_collection_link": "https://crimson-flare-257623.postman.co/workspace/Tahsilat-Payment-API~c98183b8-d594-4a38-9939-9f91e6916458/collection/11592891-38f571f9-2f9b-43cf-93f6-2fc61f74314a?action=share&source=collection_link&creator=11592891"
+	},
+	"item": [
+		{
+			"name": "Token",
+			"item": [
+				{
+					"name": "Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{secret_key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}token/get-token",
+							"host": [
+								"{{api_base_url}}token"
+							],
+							"path": [
+								"get-token"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment",
+			"item": [
+				{
+					"name": "3ds",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "customer_id",
+									"value": "<int>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "cardholder_name",
+									"value": "<string>",
+									"description": "Just white label payment",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "card_number",
+									"value": "<string>",
+									"description": "Just white label payment",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "expiry_month",
+									"value": "<string>",
+									"description": "Just white label payment",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "expiry_year",
+									"value": "<string>",
+									"description": "Just white label payment",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "cvv",
+									"value": "<string>",
+									"description": "Just white label payment",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "amount",
+									"value": "<int>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "currency",
+									"value": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "installment_count",
+									"value": "<int>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "redirect_url",
+									"value": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "pre_auth",
+									"value": "<bool>",
+									"description": "true: pre auth | empty or false non pre auth",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "products",
+									"value": "<json-array>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "product_ids[0]",
+									"value": "<int>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "product_ids[1]",
+									"value": "<int>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "white_label",
+									"value": "<bool>",
+									"description": "true: white label mode | false: not white label mode",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "metadata",
+									"value": "{\"key\":\"value\", \"key2\":\"value2\",\"key3\":\"value3\"}",
+									"description": "<object>-<key:value>",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_base_url}}payment/3ds",
+							"host": [
+								"{{api_base_url}}payment"
+							],
+							"path": [
+								"3ds"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bin",
+			"item": [
+				{
+					"name": "Bin Lookup",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "bin_number",
+									"value": "<int>",
+									"description": "6 Digits",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_base_url}}bin-lookup",
+							"host": [
+								"{{api_base_url}}bin-lookup"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Transaction",
+			"item": [
+				{
+					"name": "Check Status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{api_base_url}}transaction/:transaction_id",
+							"host": [
+								"{{api_base_url}}transaction"
+							],
+							"path": [
+								":transaction_id"
+							],
+							"variable": [
+								{
+									"key": "transaction_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Refund",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "transaction_id",
+									"value": "<int>",
+									"description": "*",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "amount",
+									"value": "<int>",
+									"description": "*",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "<string>",
+									"description": "*",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_base_url}}transaction/refund",
+							"host": [
+								"{{api_base_url}}transaction"
+							],
+							"path": [
+								"refund"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Resolve Pre Auth",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "transaction_id",
+									"value": "<int>",
+									"description": "* 14 digits ",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "status",
+									"value": "<bool>",
+									"description": "* true | false",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_base_url}}transaction/resolve-pre-auth",
+							"host": [
+								"{{api_base_url}}transaction"
+							],
+							"path": [
+								"resolve-pre-auth"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Commissions / Installments",
+			"item": [
+				{
+					"name": "Get Commissions",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "bin_number",
+									"value": "<int>",
+									"description": "6 digits",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "commission_by",
+									"value": "<int>",
+									"description": "1 or 2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_base_url}}pos/commissions",
+							"host": [
+								"{{api_base_url}}pos"
+							],
+							"path": [
+								"commissions"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Customers",
+			"item": [
+				{
+					"name": "Create Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lastname",
+									"value": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "country",
+									"value": "<string>",
+									"description": "Alpha-2 Iso Codes",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "district",
+									"value": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "zip_code",
+									"value": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "metadata",
+									"value": "{\"key\":\"value\", \"key2\":\"value2\",\"key3\":\"value3\"}",
+									"description": "<object>-<key:value>",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_base_url}}customers",
+							"host": [
+								"{{api_base_url}}customers"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}customers/:customer_id",
+							"host": [
+								"{{api_base_url}}customers"
+							],
+							"path": [
+								":customer_id"
+							],
+							"variable": [
+								{
+									"key": "customer_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Search Customers",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}customers/search",
+							"host": [
+								"{{api_base_url}}customers"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "20",
+									"disabled": true
+								},
+								{
+									"key": "name_lastname",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "customer_date[start_date]",
+									"value": "<string>",
+									"description": "Y-m-d",
+									"disabled": true
+								},
+								{
+									"key": "customer_date[end_date]",
+									"value": "<string>",
+									"description": "Y-m-d",
+									"disabled": true
+								},
+								{
+									"key": "metadata[key]",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "metadata[value]",
+									"value": "<string>",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lastname",
+									"value": "<string>",
+									"description": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "<string>",
+									"description": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "<string>",
+									"description": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "country",
+									"value": "<string>",
+									"description": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "<string>",
+									"description": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "district",
+									"value": "<string>",
+									"description": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "<string>",
+									"description": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "zip_code",
+									"value": "<string>",
+									"description": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "metadata",
+									"value": "{\"key\":\"value\", \"key2\":\"value2\",\"key3\":\"value3\"}",
+									"description": "<object>-<key:value>",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_base_url}}customers/:customer_id",
+							"host": [
+								"{{api_base_url}}customers"
+							],
+							"path": [
+								":customer_id"
+							],
+							"variable": [
+								{
+									"key": "customer_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{api_base_url}}customers/:customer_id",
+							"host": [
+								"{{api_base_url}}customers"
+							],
+							"path": [
+								":customer_id"
+							],
+							"variable": [
+								{
+									"key": "customer_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Create Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product_name",
+									"value": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "<int>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "metadata",
+									"value": "{\"key\":\"value\", \"key2\":\"value2\",\"key3\":\"value3\"}",
+									"description": "<object>-<key:value>",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_base_url}}products",
+							"host": [
+								"{{api_base_url}}products"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}products/:product_id",
+							"host": [
+								"{{api_base_url}}products"
+							],
+							"path": [
+								":product_id"
+							],
+							"variable": [
+								{
+									"key": "product_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Search Products",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true,
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "{{api_base_url}}products/search",
+							"host": [
+								"{{api_base_url}}products"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "0",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "20",
+									"disabled": true
+								},
+								{
+									"key": "product_id",
+									"value": "<int>",
+									"disabled": true
+								},
+								{
+									"key": "product_name",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "financial[price]",
+									"value": "<int>",
+									"disabled": true
+								},
+								{
+									"key": "financial[operator]",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "product_date[start_date]",
+									"value": "<string>",
+									"description": "Y-m-d",
+									"disabled": true
+								},
+								{
+									"key": "product_date[end_date]",
+									"value": "<string>",
+									"description": "Y-m-d",
+									"disabled": true
+								},
+								{
+									"key": "metadata[key]",
+									"value": "<string>",
+									"disabled": true
+								},
+								{
+									"key": "metadata[value]",
+									"value": "<string>",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "product_name",
+									"value": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "price",
+									"value": "<int>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "description",
+									"value": "<string>",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "metadata",
+									"value": "{\"key\":\"value\", \"key2\":\"value2\",\"key3\":\"value3\"}",
+									"description": "<object>-<key:value>",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api_base_url}}products/:product_id",
+							"host": [
+								"{{api_base_url}}products"
+							],
+							"path": [
+								":product_id"
+							],
+							"variable": [
+								{
+									"key": "product_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "{{content-type}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept-Language",
+								"value": "{{lang}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{api_base_url}}products/:product_id",
+							"host": [
+								"{{api_base_url}}products"
+							],
+							"path": [
+								":product_id"
+							],
+							"variable": [
+								{
+									"key": "product_id",
+									"value": ""
+								}
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api_base_url",
+			"value": "https://api.tahsilat.dev/v1/",
+			"type": "string"
+		},
+		{
+			"key": "content-type",
+			"value": "application/json",
+			"type": "string"
+		},
+		{
+			"key": "lang",
+			"value": "tr",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "access_token",
+			"type": "string"
+		},
+		{
+			"key": "public_key",
+			"value": "pk_test_xxx",
+			"type": "string"
+		},
+		{
+			"key": "secret_key",
+			"value": "sk_test_xxx",
+			"type": "string"
+		}
+	]
+}
